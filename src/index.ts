@@ -22,6 +22,7 @@ import { tokensCommand } from './commands/tokens.js'
 import { keysCommand } from './commands/keys.js'
 import { accountCommand } from './commands/account.js'
 import { packsCommand } from './commands/packs.js'
+import { uploadCommand } from './commands/upload.js'
 
 const program = new Command()
 
@@ -66,6 +67,7 @@ program.addCommand(tokensCommand)
 program.addCommand(keysCommand)
 program.addCommand(accountCommand)
 program.addCommand(packsCommand)
+program.addCommand(uploadCommand)
 
 program.parseAsync().catch((err) => {
   console.error(err instanceof Error ? err.message : 'Unknown error')
