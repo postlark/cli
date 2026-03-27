@@ -29,10 +29,10 @@ async function browserLogin(apiBase: string): Promise<void> {
   }
 
   // 2. Show code and open browser
-  console.log(`  Your confirmation code: ${user_code}\n`)
-  console.log(`  If the browser doesn't open, visit:`)
-  console.log(`  ${verify_url}\n`)
   openBrowser(verify_url)
+  console.log(`  Your confirmation code: ${user_code}\n`)
+  console.log(`  Open this URL in your browser:`)
+  console.log(`  ${verify_url}\n`)
 
   // 3. Poll for authorization
   const pollInterval = (interval || 2) * 1000
