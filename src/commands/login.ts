@@ -4,7 +4,7 @@ import { platform } from 'node:os'
 import { createInterface } from 'node:readline'
 import { loadConfig, saveConfig, getConfigPath } from '../config.js'
 
-const API_BASE = 'https://api.postlark.ai/v1'
+const API_BASE = 'https://api.postlark.ai'
 
 /** Open URL in default browser */
 function openBrowser(url: string): void {
