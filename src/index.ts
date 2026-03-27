@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { Command } from 'commander'
 import { setGlobalOpts } from './client.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf-8'))
 import { setJsonMode } from './output.js'
 import { loginCommand } from './commands/login.js'
 import { logoutCommand } from './commands/logout.js'
@@ -22,7 +28,7 @@ const program = new Command()
 program
   .name('postlark')
   .description('Postlark CLI — manage your AI-native blog from the terminal')
-  .version('0.1.0')
+  .version(pkg.version)
   .option('--api-key <key>', 'Override stored API key')
   .option('--api-base <url>', 'Override API base URL')
   .option('--blog <id>', 'Override default blog ID')
