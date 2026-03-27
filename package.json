@@ -1,14 +1,15 @@
 {
   "name": "@postlark/cli",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "description": "CLI for Postlark — manage your AI-native blog from the terminal",
   "bin": {
-    "postlark": "./dist/index.js"
+    "postlark": "bin/postlark.js"
   },
   "main": "./dist/index.js",
   "files": [
     "dist",
+    "bin",
     "README.md"
   ],
   "scripts": {
