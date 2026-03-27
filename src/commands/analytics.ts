@@ -10,12 +10,15 @@ export const analyticsCommand = new Command('analytics')
       const result = await apiCall<{
         total_views_7d: number
         total_views_30d: number
-        daily_views: Array<{ date: string; views: number }>
+        total_uv_7d: number
+        total_uv_30d: number
+        daily_views: Array<{ date: string; views: number; uv: number }>
         top_posts: Array<{ slug: string; title: string; views: number }>
       }>(`/analytics/overview?period=${opts.period}`)
       output(result, () => {
         const lines = [
           `Views (7d): ${result.total_views_7d}  |  Views (30d): ${result.total_views_30d}`,
+          `UV    (7d): ${result.total_uv_7d}  |  UV    (30d): ${result.total_uv_30d}`,
           '',
         ]
         if (result.top_posts.length) {
