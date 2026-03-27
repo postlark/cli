@@ -33,7 +33,7 @@ accountCommand
         writeFileSync(opts.output, JSON.stringify(data, null, 2))
         success(`Data exported to ${opts.output}`)
       } else {
-        console.log(JSON.stringify(data, null, 2))
+        output(data)
       }
     } catch (err) {
       error(err instanceof Error ? err.message : 'Failed to export data')

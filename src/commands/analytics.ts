@@ -8,12 +8,16 @@ export const analyticsCommand = new Command('analytics')
   .action(async (opts) => {
     try {
       const result = await apiCall<{
-        total_views: number
-        daily: Array<{ date: string; views: number }>
+        total_views_7d: number
+        total_views_30d: number
+        daily_views: Array<{ date: string; views: number }>
         top_posts: Array<{ slug: string; title: string; views: number }>
       }>(`/analytics/overview?period=${opts.period}`)
       output(result, () => {
-        const lines = [`Total views (${opts.period}): ${result.total_views}`, '']
+        const lines = [
+          `Views (7d): ${result.total_views_7d}  |  Views (30d): ${result.total_views_30d}`,
+          '',
+        ]
         if (result.top_posts.length) {
           lines.push('Top Posts:')
           lines.push(table(
@@ -34,15 +38,19 @@ analyticsCommand
   .action(async (slug: string) => {
     try {
       const result = await apiCall<{
-        slug: string; title: string; total_views: number
-        daily: Array<{ date: string; views: number }>
+        slug: string; views_7d: number; views_30d: number
+        daily_views: Array<{ date: string; views: number }>
       }>(`/analytics/posts/${slug}`)
       output(result, () => {
-        const lines = [`"${result.title}" (/${result.slug})`, `Total views: ${result.total_views}`, '']
-        if (result.daily.length) {
+        const lines = [
+          `/${result.slug}`,
+          `Views (7d): ${result.views_7d}  |  Views (30d): ${result.views_30d}`,
+          '',
+        ]
+        if (result.daily_views.length) {
           lines.push(table(
             ['Date', 'Views'],
-            result.daily.map((d) => [d.date, String(d.views)]),
+            result.daily_views.map((d) => [d.date, String(d.views)]),
           ))
         }
         return lines.join('\n')
