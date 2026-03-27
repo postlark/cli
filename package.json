@@ -1,0 +1,45 @@
+{
+  "name": "@postlark/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CLI for Postlark — manage your AI-native blog from the terminal",
+  "bin": {
+    "postlark": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "postlark",
+    "blog",
+    "cli",
+    "ai",
+    "publishing",
+    "markdown"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/postlark/postlark"
+  },
+  "homepage": "https://postlark.ai",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@postlark/shared": "workspace:*",
+    "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7"
+  }
+}
