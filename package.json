@@ -1,6 +1,6 @@
 {
   "name": "@postlark/cli",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "description": "CLI for Postlark — manage your AI-native blog from the terminal",
   "bin": {
